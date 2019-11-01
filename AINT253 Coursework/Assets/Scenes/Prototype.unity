@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 294885543}
   - component: {fileID: 294885542}
   - component: {fileID: 294885547}
+  - component: {fileID: 294885548}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -298,13 +299,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294885541}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.5, z: 6.79}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.19, y: 4.5, z: 12.13}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &294885547
 MonoBehaviour:
@@ -318,7 +319,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d7869642427be742a9d1ee57196b806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+--- !u!114 &294885548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294885541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f6a0d2b6a6ad342bfe47db5a5e1282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &373079133
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,7 +422,7 @@ GameObject:
   - component: {fileID: 486435987}
   m_Layer: 0
   m_Name: Room Colliders
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -426,8 +438,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 26.500149, y: 11.170743, z: 2.1468573}
-  m_Center: {x: 0.40589285, y: 4.624925, z: 0.3328817}
+  m_Size: {x: 30.182037, y: 11.170743, z: 2.1468573}
+  m_Center: {x: -0.31417894, y: 4.624925, z: 0.3328817}
 --- !u!4 &486435984
 Transform:
   m_ObjectHideFlags: 0
@@ -454,8 +466,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8107967, y: 11.170743, z: 21.145271}
-  m_Center: {x: 21.638428, y: 4.624925, z: 19.896317}
+  m_Size: {x: 2.0095062, y: 11.170743, z: 23.674728}
+  m_Center: {x: 21.539074, y: 4.624925, z: 19.344398}
 --- !u!65 &486435986
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -467,8 +479,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.159214, y: 11.170743, z: 31.664776}
-  m_Center: {x: -13.924767, y: 4.624925, z: 15.091845}
+  m_Size: {x: 2.159214, y: 11.170743, z: 33.056477}
+  m_Center: {x: -13.924767, y: 4.624925, z: 15.787695}
 --- !u!65 &486435987
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -480,8 +492,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 17.76007, y: 11.170743, z: 3.5837975}
-  m_Center: {x: 13.897604, y: 4.624925, z: 32.221863}
+  m_Size: {x: 17.76007, y: 11.170743, z: 3.5817184}
+  m_Center: {x: 13.897604, y: 4.624925, z: 32.222904}
 --- !u!65 &486435988
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -507,7 +519,7 @@ GameObject:
   - component: {fileID: 650377015}
   m_Layer: 0
   m_Name: Diagonal
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537,8 +549,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.614075, y: 14.646931, z: 12.6924305}
-  m_Center: {x: -0.035392918, y: 2.9041462, z: -4.0141535}
+  m_Size: {x: 3.0011287, y: 14.646931, z: 14.316002}
+  m_Center: {x: -0.22891766, y: 2.9041462, z: -3.2023697}
 --- !u!1001 &707042075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -589,7 +601,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 5e669867fa0f1d3458b3f84674544387,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 5e669867fa0f1d3458b3f84674544387,
         type: 3}
@@ -900,7 +912,7 @@ Transform:
   m_LocalScale: {x: 50, y: 2, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1359642615 stripped
 Transform:
@@ -1035,7 +1047,7 @@ Transform:
   m_Children:
   - {fileID: 3248338879251766267}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!23 &6806638068980638680
 MeshRenderer:
