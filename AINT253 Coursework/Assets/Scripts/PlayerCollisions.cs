@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCollisions : MonoBehaviour
 {
-    public static bool allPuzzlesComplete = true;
+    public static bool allPuzzlesComplete = false;
     public static bool wirePuzzleComplete = true;
 
     public GameObject handle;
@@ -34,6 +34,16 @@ public class PlayerCollisions : MonoBehaviour
         pcMeshR = computerScreen.GetComponent<MeshRenderer>();
     }
 
+    void Update()
+    {
+        // Check all the puzzles have been completed.
+
+        if (KeypadManager.isKeypadPuzzleComplete == true)
+        {
+            allPuzzlesComplete = true;
+        }
+    }
+
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Walls")
@@ -52,10 +62,10 @@ public class PlayerCollisions : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
+
+        // Attempts to use the door handle.
         if (other.name == "Door Handle Rot")
         {
-            Debug.Log("Press E.");
-
             // Play door handle sound here.
 
             if (Input.GetKeyDown(KeyCode.E))
@@ -75,6 +85,7 @@ public class PlayerCollisions : MonoBehaviour
             }
         }
 
+        // Turning the computer on and off.
         if (other.tag == "Computer")
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -85,7 +96,6 @@ public class PlayerCollisions : MonoBehaviour
                     pcMeshR.material = darkGrey;
 
                     isComputerOn = false;
-                    Debug.Log("Switching off..");
                 }
                 else if (isComputerOn == false && wirePuzzleComplete == true)
                 {
@@ -93,7 +103,6 @@ public class PlayerCollisions : MonoBehaviour
                     pcMeshR.material = cctv;
 
                     isComputerOn = true;
-                    Debug.Log("Switching on..");
                 }
                 else
                 {
@@ -101,8 +110,21 @@ public class PlayerCollisions : MonoBehaviour
                     pcMeshR.material = spaceInvaders;
 
                     isComputerOn = true;
-                    Debug.Log("Switching on..");
                 }
+            }
+        }
+
+        // Pressing buttons on the keypad.
+        if (other.tag == "Button" && PlayerRayCast.didHitButton == true && KeypadManager.isKeypadPuzzleComplete == false)
+        {
+            if (Input.GetKeyDown(KeyCode.E) && KeypadManager.playerInput.Length < 4)
+            {
+                // Play button sound here.
+
+                // Visual feedback.
+
+                KeypadManager.AddToCode(PlayerRayCast.hitDuplicate.collider.name);
+                Debug.Log("Sending " + PlayerRayCast.hitDuplicate.collider.name);
             }
         }
     }
