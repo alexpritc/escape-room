@@ -641,7 +641,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 9a9d350634bd5db4eb1712bda2f81be7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.67
+      value: 1.135
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 9a9d350634bd5db4eb1712bda2f81be7,
         type: 3}
@@ -683,6 +683,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2416733968201007103, guid: 9a9d350634bd5db4eb1712bda2f81be7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e1e5f9f148b9f34eb1d360908f7fcca, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a9d350634bd5db4eb1712bda2f81be7, type: 3}
 --- !u!1 &650377013
@@ -1218,10 +1223,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 3.007124
-  m_Height: 6.014248
+  m_Radius: 4.354883
+  m_Height: 8.709766
   m_Direction: 1
-  m_Center: {x: 0.6189656, y: -0.07703662, z: -1.6966915}
+  m_Center: {x: 0.6189656, y: -0.07703686, z: -0.34893227}
 --- !u!95 &1071133187
 Animator:
   serializedVersion: 3
