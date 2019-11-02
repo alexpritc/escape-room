@@ -38,7 +38,7 @@ public class PlayerCollisions : MonoBehaviour
     {
         if (other.gameObject.tag == "Walls")
         {
-            PlayerMovement.speed = 1f;
+            PlayerMovement.speed = 2.5f;
         }
     }
 
