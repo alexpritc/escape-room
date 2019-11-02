@@ -10,6 +10,7 @@ public class PlayerCollisions : MonoBehaviour
     public GameObject handle;
     public GameObject door;
     public GameObject computerScreen;
+    public Light computerlight;
 
     public Material darkGrey;
     public Material spaceInvaders;
@@ -32,6 +33,8 @@ public class PlayerCollisions : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
 
         pcMeshR = computerScreen.GetComponent<MeshRenderer>();
+
+        computerlight.enabled = false;
     }
 
     void Update()
@@ -92,22 +95,28 @@ public class PlayerCollisions : MonoBehaviour
             {
                 if (isComputerOn == true)
                 {
-                    // Play switch on/off sound.
+                    // Play switch off sound.
                     pcMeshR.material = darkGrey;
+
+                    computerlight.enabled = false;
 
                     isComputerOn = false;
                 }
                 else if (isComputerOn == false && wirePuzzleComplete == true)
                 {
-                    // Play switch on/off sound.
+                    // Play switch on sound.
                     pcMeshR.material = cctv;
+
+                    computerlight.enabled = true;
 
                     isComputerOn = true;
                 }
                 else
                 {
-                    // Play switch on/off sound.
+                    // Play switch on sound.
                     pcMeshR.material = spaceInvaders;
+
+                    computerlight.enabled = true;
 
                     isComputerOn = true;
                 }
