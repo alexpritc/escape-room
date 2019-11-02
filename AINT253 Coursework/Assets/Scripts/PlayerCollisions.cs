@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerCollisions : MonoBehaviour
 {
+    public static bool allPuzzlesComplete = true;
+
     public GameObject handle;
     public GameObject door;
 
@@ -47,7 +49,10 @@ public class PlayerCollisions : MonoBehaviour
                 handleAnim.SetBool("isUsed", true);
                 Invoke("Buffer", 0.1f);
 
-                Invoke("OpenDoor", 0.1f);
+                if (allPuzzlesComplete)
+                {
+                    Invoke("OpenDoor", 0.1f);
+                }
             }
         }
     }
