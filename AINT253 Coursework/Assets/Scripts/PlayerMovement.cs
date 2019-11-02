@@ -23,5 +23,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
 
         rb.MovePosition(rb.position + (move * speed * Time.deltaTime));
+
+        // Play footstep sounds here.
     }
 }

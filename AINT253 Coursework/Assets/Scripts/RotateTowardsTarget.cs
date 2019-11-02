@@ -14,9 +14,7 @@ public class RotateTowardsTarget : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(target.transform.position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed);
 
+        // Play camera moving mechanical sound here. *Vsssst*. *Vrrmm*.
     }
-
-    //var rotation = Quaternion.LookRotation(target.position - transform.position);
-    //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime* damping);
  }
 
