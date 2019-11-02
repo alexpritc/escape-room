@@ -123,6 +123,7 @@ public class PlayerCollisions : MonoBehaviour
 
                 // Visual feedback.
 
+                // Send the button pressed to the keypad to add it to the current input.
                 KeypadManager.AddToCode(PlayerRayCast.hitDuplicate.collider.name);
                 Debug.Log("Sending " + PlayerRayCast.hitDuplicate.collider.name);
             }

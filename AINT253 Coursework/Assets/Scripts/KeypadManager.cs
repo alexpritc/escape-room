@@ -43,6 +43,34 @@ public class KeypadManager : MonoBehaviour
     {
         playerInput += character;
         Debug.Log("Send " + playerInput);
+
+        switch (playerInput.Length)
+        {
+            case 1:
+                keypadAnim.SetBool("is1", true);
+
+                keypadAnim.SetBool("is2", false);
+                keypadAnim.SetBool("is3", false);
+                break;
+            case 2:
+                keypadAnim.SetBool("is2", true);
+
+                keypadAnim.SetBool("is1", false);
+                keypadAnim.SetBool("is3", false);
+                break;
+            case 3:
+                keypadAnim.SetBool("is3", true);
+
+                keypadAnim.SetBool("is1", false);
+                keypadAnim.SetBool("is2", false);
+                break;
+            default:
+                keypadAnim.SetBool("is1", false);
+                keypadAnim.SetBool("is2", false);
+                keypadAnim.SetBool("is3", false);
+                Debug.Log("Error, playerInput added to but not 1,2,3 in length.");
+                break;
+        }
     }
 
     // Is the inputted number the same as the code.
