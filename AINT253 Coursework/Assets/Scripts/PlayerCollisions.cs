@@ -10,6 +10,7 @@ public class PlayerCollisions : MonoBehaviour
     public GameObject handle;
     public GameObject door;
     public GameObject computerScreen;
+    public GameObject code;
     public Light computerlight;
 
     public Material darkGrey;
@@ -35,6 +36,7 @@ public class PlayerCollisions : MonoBehaviour
         pcMeshR = computerScreen.GetComponent<MeshRenderer>();
 
         computerlight.enabled = false;
+        code.SetActive(false);
     }
 
     void Update()
@@ -99,6 +101,7 @@ public class PlayerCollisions : MonoBehaviour
                     pcMeshR.material = darkGrey;
 
                     computerlight.enabled = false;
+                    code.SetActive(false);
 
                     isComputerOn = false;
                 }
@@ -108,6 +111,7 @@ public class PlayerCollisions : MonoBehaviour
                     pcMeshR.material = cctv;
 
                     computerlight.enabled = true;
+                    code.SetActive(true);
 
                     isComputerOn = true;
                 }
@@ -117,6 +121,8 @@ public class PlayerCollisions : MonoBehaviour
                     pcMeshR.material = spaceInvaders;
 
                     computerlight.enabled = true;
+
+                    code.SetActive(false);
 
                     isComputerOn = true;
                 }
