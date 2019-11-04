@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCollisions : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class PlayerCollisions : MonoBehaviour
     public Material darkGrey;
     public Material spaceInvaders;
     public Material cctv;
+
+    public Text pressE;
 
     private Animator handleAnim;
     private Animator doorAnim;
@@ -37,6 +40,8 @@ public class PlayerCollisions : MonoBehaviour
 
         computerlight.enabled = false;
         code.SetActive(false);
+
+        pressE.enabled = false;
     }
 
     void Update()
@@ -69,8 +74,10 @@ public class PlayerCollisions : MonoBehaviour
     {
 
         // Attempts to use the door handle.
-        if (other.name == "Door Handle Rot")
+        if (other.tag == "Door Handle" && PlayerRayCast.didHitHandle == true)
         {
+            pressE.enabled = true;
+
             // Play door handle sound here.
 
             if (Input.GetKeyDown(KeyCode.E))
@@ -89,11 +96,12 @@ public class PlayerCollisions : MonoBehaviour
 
             }
         }
-
         // Turning the computer on and off.
-        if (other.tag == "Computer")
+        else if (other.tag == "Computer" && PlayerRayCast.didHitComputer == true)
         {
-            if (Input.GetKeyDown(KeyCode.E) && PlayerRayCast.didHitComputer == true)
+            pressE.enabled = true;
+
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 if (isComputerOn == true)
                 {
@@ -128,10 +136,11 @@ public class PlayerCollisions : MonoBehaviour
                 }
             }
         }
-
         // Pressing buttons on the keypad.
-        if (other.tag == "Button" && PlayerRayCast.didHitButton == true && KeypadManager.isKeypadPuzzleComplete == false)
+        else if (other.tag == "Button" && PlayerRayCast.didHitButton == true && KeypadManager.isKeypadPuzzleComplete == false)
         {
+            pressE.enabled = true;
+
             if (Input.GetKeyDown(KeyCode.E) && KeypadManager.playerInput.Length < 4)
             {
                 // Play button sound here.
@@ -143,6 +152,15 @@ public class PlayerCollisions : MonoBehaviour
                 Debug.Log("Sending " + PlayerRayCast.hitDuplicate.collider.name);
             }
         }
+        else
+        {
+            pressE.enabled = false;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        pressE.enabled = false;
     }
 
     void Buffer()

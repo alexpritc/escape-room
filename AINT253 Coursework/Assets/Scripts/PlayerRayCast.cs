@@ -6,6 +6,8 @@ public class PlayerRayCast : MonoBehaviour
 {
     public static bool didHitButton = false;
     public static bool didHitComputer = false;
+    public static bool didHitHandle = false;
+
     public static RaycastHit hitDuplicate;
 
     // Update is called once per frame
@@ -24,7 +26,15 @@ public class PlayerRayCast : MonoBehaviour
         {
             Debug.DrawRay(transform.position, fwd * hit.distance, Color.yellow);
 
-            if (hit.collider.gameObject.tag == "Computer")
+            if (hit.collider.gameObject.name == "Door Handle")
+            {
+                didHitHandle = true;
+            }
+            else
+            {
+                didHitHandle = false;
+            }
+            if (hit.collider.gameObject.name == "Computer")
             {
                 didHitComputer = true;
             }
@@ -41,10 +51,12 @@ public class PlayerRayCast : MonoBehaviour
                 didHitButton = false;
             }
 
+
             hitDuplicate = hit;
         }
         else
         {
+            didHitHandle = false;
             didHitComputer = false;
             didHitButton = false;
         }

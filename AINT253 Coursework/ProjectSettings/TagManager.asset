@@ -9,6 +9,8 @@ TagManager:
   - Player Pointer
   - Button
   - Key Buttons
+  - Game End
+  - Door Handle
   layers:
   - Default
   - TransparentFX
