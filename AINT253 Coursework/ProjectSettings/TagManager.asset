@@ -8,6 +8,7 @@ TagManager:
   - Computer
   - Player Pointer
   - Button
+  - Key Buttons
   layers:
   - Default
   - TransparentFX

@@ -93,7 +93,7 @@ public class PlayerCollisions : MonoBehaviour
         // Turning the computer on and off.
         if (other.tag == "Computer")
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && PlayerRayCast.didHitComputer == true)
             {
                 if (isComputerOn == true)
                 {

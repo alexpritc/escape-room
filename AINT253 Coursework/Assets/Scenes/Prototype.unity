@@ -646,7 +646,7 @@ GameObject:
   - component: {fileID: 268126847}
   m_Layer: 9
   m_Name: 6
-  m_TagString: Untagged
+  m_TagString: Key Buttons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2160,7 +2160,7 @@ GameObject:
   - component: {fileID: 886771724}
   m_Layer: 9
   m_Name: 0
-  m_TagString: Untagged
+  m_TagString: Key Buttons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2334,6 +2334,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Computer
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4a8381219c506084590945f9982f3eae,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -5975033157549033438, guid: 4a8381219c506084590945f9982f3eae,
         type: 3}
@@ -2582,7 +2587,7 @@ GameObject:
   - component: {fileID: 1011322894}
   m_Layer: 9
   m_Name: 7
-  m_TagString: Untagged
+  m_TagString: Key Buttons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2699,7 +2704,7 @@ GameObject:
   - component: {fileID: 1021414577}
   m_Layer: 9
   m_Name: 5
-  m_TagString: Untagged
+  m_TagString: Key Buttons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2791,7 +2796,7 @@ GameObject:
   - component: {fileID: 1044822765}
   m_Layer: 9
   m_Name: 1
-  m_TagString: Untagged
+  m_TagString: Key Buttons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3695,7 +3700,7 @@ GameObject:
   - component: {fileID: 1308993336}
   m_Layer: 9
   m_Name: 3
-  m_TagString: Untagged
+  m_TagString: Key Buttons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3981,6 +3986,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 4
   m_Center: {x: -1.5, y: 0, z: 0}
+--- !u!65 &1365377894
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365377891}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0804949, y: 2.7511134, z: 2.4667425}
+  m_Center: {x: 0.6305795, y: -0.18850875, z: -0.09297323}
 --- !u!1 &1412638013
 GameObject:
   m_ObjectHideFlags: 0
@@ -4888,7 +4906,7 @@ GameObject:
   - component: {fileID: 1752921335}
   m_Layer: 9
   m_Name: 8
-  m_TagString: Untagged
+  m_TagString: Key Buttons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4980,7 +4998,7 @@ GameObject:
   - component: {fileID: 1768465634}
   m_Layer: 9
   m_Name: 9
-  m_TagString: Untagged
+  m_TagString: Key Buttons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5395,7 +5413,7 @@ GameObject:
   - component: {fileID: 1941035284}
   m_Layer: 9
   m_Name: 2
-  m_TagString: Untagged
+  m_TagString: Key Buttons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5666,7 +5684,7 @@ GameObject:
   - component: {fileID: 2004357769}
   m_Layer: 9
   m_Name: 4
-  m_TagString: Untagged
+  m_TagString: Key Buttons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
