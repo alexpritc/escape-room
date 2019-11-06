@@ -3122,7 +3122,7 @@ Light:
   serializedVersion: 9
   m_Type: 0
   m_Color: {r: 0.9716981, g: 0.9402343, b: 0.8021093, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1
   m_Range: 26.25
   m_SpotAngle: 114
   m_InnerSpotAngle: 1
@@ -3183,7 +3183,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &886771722
 GameObject:
@@ -5910,9 +5910,9 @@ Light:
   serializedVersion: 9
   m_Type: 0
   m_Color: {r: 0.9716981, g: 0.9402343, b: 0.8021093, a: 1}
-  m_Intensity: 2
+  m_Intensity: 5
   m_Range: 26.25
-  m_SpotAngle: 151.86957
+  m_SpotAngle: 178.26353
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -5967,7 +5967,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349990358}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 2.32, y: 11.36, z: 14.607}
+  m_LocalPosition: {x: 3.7, y: 11.36, z: 14.607}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6813,7 +6813,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 82d94bbf952655344b4c3b8858c36bd1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 82d94bbf952655344b4c3b8858c36bd1,
         type: 3}
@@ -10213,7 +10213,7 @@ Light:
   serializedVersion: 9
   m_Type: 0
   m_Color: {r: 0.9716981, g: 0.9402343, b: 0.8021093, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1
   m_Range: 26.25
   m_SpotAngle: 114
   m_InnerSpotAngle: 21.80208
@@ -10270,11 +10270,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124996067}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -12.31, y: 10.15, z: 17.14}
+  m_LocalPosition: {x: -12.31, y: 10.22, z: 17.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &2132367961
 GameObject:
