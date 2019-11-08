@@ -81,15 +81,23 @@ public class PlayerCollisions : MonoBehaviour
             // Play door handle sound here.
 
             if (Input.GetKeyDown(KeyCode.E))
-            {
-                if (allPuzzlesComplete)
+            { 
+                if (!doorAnim.GetBool("isOpened"))
                 {
-                    Invoke("OpenDoor", 0.2f);
+                    if (allPuzzlesComplete)
+                    {
+                        Invoke("OpenDoor", 0.2f);
+                    }
+                    else
+                    {
+                        // Play door locked sound here.
+                    }
                 }
                 else
                 {
-                    // Play door locked sound here.
+                    Invoke("CloseDoor", 0.15f);
                 }
+               
 
                 handleAnim.SetBool("isUsed", true);
                 Invoke("Buffer", 0.1f);
@@ -170,8 +178,15 @@ public class PlayerCollisions : MonoBehaviour
 
     void OpenDoor()
     {
-        doorAnim.SetBool("IsOpened", true);
+        doorAnim.SetBool("isOpened", true);
 
         // Play door opening sound here.
+    }
+
+    void CloseDoor()
+    {
+        doorAnim.SetBool("isOpened", false);
+
+        // Play door closing sound here.
     }
 }
