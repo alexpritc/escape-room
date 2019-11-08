@@ -87,6 +87,7 @@ public class PlayerCollisions : MonoBehaviour
                     if (allPuzzlesComplete)
                     {
                         Invoke("OpenDoor", 0.2f);
+                        
                     }
                     else
                     {
@@ -95,13 +96,11 @@ public class PlayerCollisions : MonoBehaviour
                 }
                 else
                 {
-                    Invoke("CloseDoor", 0.15f);
+                    // Remove interactions from the door handle.
                 }
-               
 
                 handleAnim.SetBool("isUsed", true);
                 Invoke("Buffer", 0.1f);
-
             }
         }
         // Turning the computer on and off.
@@ -174,6 +173,7 @@ public class PlayerCollisions : MonoBehaviour
     void Buffer()
     {
         handleAnim.SetBool("isUsed", false);
+        handleAnim.SetBool("isLocked", false);
     }
 
     void OpenDoor()
