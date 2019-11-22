@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Animator playerAnim;
     private Rigidbody rb;
+    private Vector3 move;
 
     void Start()
     {
@@ -18,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame.
-    void FixedUpdate()
+    void Update()
     {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -33,10 +34,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Local movement according to player's rotation.
-        Vector3 move = transform.right * x + transform.forward * z;
+        move = transform.right * x + transform.forward * z;
+
+        
+    }
+
+    void FixedUpdate()
+    {
+        // Play footstep sounds here.
 
         rb.MovePosition(rb.position + (move * speed * Time.deltaTime));
-
-        // Play footstep sounds here.
     }
 }

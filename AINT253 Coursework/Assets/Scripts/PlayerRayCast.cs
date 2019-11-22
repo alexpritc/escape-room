@@ -11,7 +11,7 @@ public class PlayerRayCast : MonoBehaviour
     public static RaycastHit hitDuplicate;
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         // Bit shift the index of the layer (9) to get a bit mask
         int layerMask9 = 1 << 9;

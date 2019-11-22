@@ -843,11 +843,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Door Handle
       objectReference: {fileID: 0}
-    - target: {fileID: 2534866581884222612, guid: b696f541160e0d748bbc01c27613ee7c,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b696f541160e0d748bbc01c27613ee7c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -918,6 +913,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cd197c9cc198b4548a50f245f22d6f5a, type: 2}
+    - target: {fileID: 2534866581884222612, guid: b696f541160e0d748bbc01c27613ee7c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b696f541160e0d748bbc01c27613ee7c, type: 3}
 --- !u!1 &225768041
@@ -7352,11 +7352,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2534866581884222612, guid: 5e669867fa0f1d3458b3f84674544387,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 5e669867fa0f1d3458b3f84674544387,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7427,6 +7422,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4213a9812e0fcb94fb3f6b47f4ccc42b, type: 2}
+    - target: {fileID: 2534866581884222612, guid: 5e669867fa0f1d3458b3f84674544387,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e669867fa0f1d3458b3f84674544387, type: 3}
 --- !u!1001 &726099922
@@ -9245,6 +9245,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FuseBox
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 6c31630c4a5d0d64ca6a954ee32d17a2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6c31630c4a5d0d64ca6a954ee32d17a2,
         type: 3}
@@ -11813,11 +11818,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 2534866581884222612, guid: b696f541160e0d748bbc01c27613ee7c,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b696f541160e0d748bbc01c27613ee7c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11878,6 +11878,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cd197c9cc198b4548a50f245f22d6f5a, type: 2}
+    - target: {fileID: 2534866581884222612, guid: b696f541160e0d748bbc01c27613ee7c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b696f541160e0d748bbc01c27613ee7c, type: 3}
 --- !u!1 &1752921333
@@ -23030,7 +23035,7 @@ PrefabInstance:
     - target: {fileID: 6288067580921227046, guid: e5e403d267e9f43449a423b767f36ae9,
         type: 3}
       propertyPath: mouseSensitivity
-      value: 500
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 6288067580921227046, guid: e5e403d267e9f43449a423b767f36ae9,
         type: 3}
@@ -23056,6 +23061,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.a
       value: 0.4745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288067580520239870, guid: e5e403d267e9f43449a423b767f36ae9,
+        type: 3}
+      propertyPath: sceneName
+      value: Menu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5e403d267e9f43449a423b767f36ae9, type: 3}
