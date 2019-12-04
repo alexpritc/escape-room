@@ -10,9 +10,14 @@ public class PlayerCollisions : MonoBehaviour
 
     public GameObject handle;
     public GameObject door;
+
     public GameObject computerScreen;
     public GameObject code;
     public Light computerlight;
+
+    public GameObject switch1;
+    public GameObject switch2;
+    public GameObject switch3;
 
     public Material darkGrey;
     public Material spaceInvaders;
@@ -22,6 +27,10 @@ public class PlayerCollisions : MonoBehaviour
 
     private Animator handleAnim;
     private Animator doorAnim;
+
+    private Animator switch1Anim;
+    private Animator switch2Anim;
+    private Animator switch3Anim;
 
     private Rigidbody rb;
 
@@ -33,6 +42,10 @@ public class PlayerCollisions : MonoBehaviour
     {
         handleAnim = handle.GetComponent<Animator>();
         doorAnim = door.GetComponent<Animator>();
+
+        switch1Anim = switch1.GetComponent<Animator>();
+        switch2Anim = switch2.GetComponent<Animator>();
+        switch3Anim = switch3.GetComponent<Animator>();
 
         rb = gameObject.GetComponent<Rigidbody>();
 
@@ -72,7 +85,6 @@ public class PlayerCollisions : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-
         // Attempts to use the door handle.
         if (other.tag == "Door Handle" && PlayerRayCast.didHitHandle == true)
         {
@@ -152,11 +164,51 @@ public class PlayerCollisions : MonoBehaviour
             {
                 // Play button sound here.
 
-                // Visual feedback.
-
                 // Send the button pressed to the keypad to add it to the current input.
                 KeypadManager.AddToCode(PlayerRayCast.hitDuplicate.collider.name);
-                Debug.Log("Sending " + PlayerRayCast.hitDuplicate.collider.name);
+            }
+        }
+        else if (other.tag == "Fusebox" && PlayerRayCast.didHitSwitch == true)
+        {
+            pressE.enabled = true;
+
+            // Switch 1.
+            if (Input.GetKeyDown(KeyCode.E) && PlayerRayCast.hitDuplicate.collider.gameObject.name == "Switch1")
+            {
+                if (switch1Anim.GetBool("isDown"))
+                {
+                    switch1Anim.SetBool("isDown", false);
+                }
+                else
+                {
+                    switch1Anim.SetBool("isDown", true);
+                }
+            }
+
+            // Switch 2.
+            if (Input.GetKeyDown(KeyCode.E) && PlayerRayCast.hitDuplicate.collider.gameObject.name == "Switch2")
+            {
+                if (switch2Anim.GetBool("isDown"))
+                {
+                    switch2Anim.SetBool("isDown", false);
+                }
+                else
+                {
+                    switch2Anim.SetBool("isDown", true);
+                }
+            }
+
+            // Switch 3.
+            if (Input.GetKeyDown(KeyCode.E) && PlayerRayCast.hitDuplicate.collider.gameObject.name == "Switch3")
+            {
+                if (switch3Anim.GetBool("isDown"))
+                {
+                    switch3Anim.SetBool("isDown", false);
+                }
+                else
+                {
+                    switch3Anim.SetBool("isDown", true);
+                }
             }
         }
         else

@@ -7,6 +7,8 @@ public class PlayerRayCast : MonoBehaviour
     public static bool didHitButton = false;
     public static bool didHitComputer = false;
     public static bool didHitHandle = false;
+    public static bool didHitObject = false;
+    public static bool didHitSwitch = false;
 
     public static RaycastHit hitDuplicate;
 
@@ -50,6 +52,22 @@ public class PlayerRayCast : MonoBehaviour
             {
                 didHitButton = false;
             }
+            if (hit.collider.gameObject.tag == "Interact")
+            {
+                didHitObject = true;
+            }
+            else
+            {
+                didHitObject = false;
+            }
+            if (hit.collider.gameObject.tag == "Switch")
+            {
+                didHitSwitch = true;
+            }
+            else
+            {
+                didHitSwitch = false;
+            }
 
 
             hitDuplicate = hit;
@@ -59,6 +77,8 @@ public class PlayerRayCast : MonoBehaviour
             didHitHandle = false;
             didHitComputer = false;
             didHitButton = false;
+            didHitObject = false;
+            didHitSwitch = false;
         }
     }
 }

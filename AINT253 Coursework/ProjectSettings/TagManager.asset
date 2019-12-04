@@ -11,6 +11,9 @@ TagManager:
   - Key Buttons
   - Game End
   - Door Handle
+  - Interact
+  - Switch
+  - Fusebox
   layers:
   - Default
   - TransparentFX
@@ -21,7 +24,7 @@ TagManager:
   - 
   - 
   - Player Raycast
-  - Buttons
+  - Interact
   - Player
   - Light
   - Roof

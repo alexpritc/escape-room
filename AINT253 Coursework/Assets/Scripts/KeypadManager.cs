@@ -68,7 +68,6 @@ public class KeypadManager : MonoBehaviour
                 keypadAnim.SetBool("is1", false);
                 keypadAnim.SetBool("is2", false);
                 keypadAnim.SetBool("is3", false);
-                Debug.Log("Error, playerInput added to but not 1,2,3 in length.");
                 break;
         }
     }
