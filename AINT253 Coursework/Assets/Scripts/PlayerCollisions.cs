@@ -12,7 +12,8 @@ public class PlayerCollisions : MonoBehaviour
 
     public GameObject computerScreen;
     public GameObject code;
-    public Light computerlight;
+    public Light standbyLight;
+    public Light screenLight;
 
     public GameObject switch1;
     public GameObject switch2;
@@ -54,7 +55,8 @@ public class PlayerCollisions : MonoBehaviour
 
         pcMeshR = computerScreen.GetComponent<MeshRenderer>();
 
-        computerlight.enabled = false;
+        standbyLight.enabled = false;
+        screenLight.enabled = false;
         code.SetActive(false);
 
         pressE.enabled = false;
@@ -68,8 +70,9 @@ public class PlayerCollisions : MonoBehaviour
             // Play switch on sound.
             pcMeshR.material = cctv;
 
-            computerlight.color = Color.red;
-            computerlight.enabled = true;
+            standbyLight.color = Color.red;
+            standbyLight.enabled = true;
+            screenLight.enabled = true;
             code.SetActive(true);
 
             isComputerOn = true;
@@ -142,7 +145,8 @@ public class PlayerCollisions : MonoBehaviour
                     // Play switch off sound.
                     pcMeshR.material = darkGrey;
 
-                    computerlight.enabled = false;
+                    standbyLight.enabled = false;
+                    screenLight.enabled = false;
                     code.SetActive(false);
 
                     isComputerOn = false;
@@ -152,8 +156,11 @@ public class PlayerCollisions : MonoBehaviour
                     // Play switch on sound.
                     pcMeshR.material = cctv;
 
-                    computerlight.color = Color.red;
-                    computerlight.enabled = true;
+                    standbyLight.color = Color.red;
+                    standbyLight.enabled = true;
+
+                    screenLight.enabled = true;
+
                     code.SetActive(true);
 
                     isComputerOn = true;
@@ -163,8 +170,10 @@ public class PlayerCollisions : MonoBehaviour
                     // Play switch on sound.
                     pcMeshR.material = darkGrey;
 
-                    computerlight.color = Color.yellow;
-                    computerlight.enabled = true;
+                    standbyLight.color = Color.yellow;
+                    standbyLight.enabled = true;
+
+                    screenLight.enabled = false;
 
                     code.SetActive(false);
 
