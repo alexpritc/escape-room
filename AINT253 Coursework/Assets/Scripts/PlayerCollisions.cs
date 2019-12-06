@@ -62,7 +62,7 @@ public class PlayerCollisions : MonoBehaviour
 
     void Update()
     {
-        if (FuseBox.fuseboxPuzzleComplete && !isComputerOn && !hasComputerBeenTurnedOn)
+        if (FuseBox.fuseboxPuzzleComplete && !hasComputerBeenTurnedOn)
         {
             hasComputerBeenTurnedOn = true;
             // Play switch on sound.
