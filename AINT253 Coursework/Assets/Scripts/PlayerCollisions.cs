@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class PlayerCollisions : MonoBehaviour
 {
     public static bool allPuzzlesComplete = false;
-    public static bool fuseboxPuzzleComplete = true;
 
     public GameObject handle;
     public GameObject door;
@@ -21,7 +20,6 @@ public class PlayerCollisions : MonoBehaviour
     public GameObject switch4;
 
     public Material darkGrey;
-    public Material spaceInvaders;
     public Material cctv;
 
     public Text pressE;
@@ -39,6 +37,8 @@ public class PlayerCollisions : MonoBehaviour
     private MeshRenderer pcMeshR;
 
     private bool isComputerOn = false;
+
+    private bool hasComputerBeenTurnedOn = false;
 
     void Start()
     {
@@ -62,8 +62,20 @@ public class PlayerCollisions : MonoBehaviour
 
     void Update()
     {
-        // Check all the puzzles have been completed.
+        if (FuseBox.fuseboxPuzzleComplete && !isComputerOn && !hasComputerBeenTurnedOn)
+        {
+            hasComputerBeenTurnedOn = true;
+            // Play switch on sound.
+            pcMeshR.material = cctv;
 
+            computerlight.color = Color.red;
+            computerlight.enabled = true;
+            code.SetActive(true);
+
+            isComputerOn = true;
+        }
+
+        // Check all the puzzles have been completed.
         if (KeypadManager.isKeypadPuzzleComplete)
         {
             allPuzzlesComplete = true;
@@ -89,7 +101,7 @@ public class PlayerCollisions : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         // Attempts to use the door handle.
-        if (other.tag == "Door Handle" && PlayerRayCast.didHitHandle == true)
+        if (other.tag == "Door Handle" && PlayerRayCast.didHitHandle)
         {
             pressE.enabled = true;
 
@@ -119,13 +131,13 @@ public class PlayerCollisions : MonoBehaviour
             }
         }
         // Turning the computer on and off.
-        else if (other.tag == "Computer" && PlayerRayCast.didHitComputer == true)
+        else if (other.tag == "Computer" && PlayerRayCast.didHitComputer)
         {
             pressE.enabled = true;
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (isComputerOn == true)
+                if (isComputerOn)
                 {
                     // Play switch off sound.
                     pcMeshR.material = darkGrey;
@@ -135,11 +147,12 @@ public class PlayerCollisions : MonoBehaviour
 
                     isComputerOn = false;
                 }
-                else if (isComputerOn == false && fuseboxPuzzleComplete == true)
+                else if (!isComputerOn && FuseBox.fuseboxPuzzleComplete == true)
                 {
                     // Play switch on sound.
                     pcMeshR.material = cctv;
 
+                    computerlight.color = Color.red;
                     computerlight.enabled = true;
                     code.SetActive(true);
 
@@ -148,8 +161,9 @@ public class PlayerCollisions : MonoBehaviour
                 else
                 {
                     // Play switch on sound.
-                    pcMeshR.material = spaceInvaders;
+                    pcMeshR.material = darkGrey;
 
+                    computerlight.color = Color.yellow;
                     computerlight.enabled = true;
 
                     code.SetActive(false);
@@ -159,7 +173,7 @@ public class PlayerCollisions : MonoBehaviour
             }
         }
         // Pressing buttons on the keypad.
-        else if (other.tag == "Button" && PlayerRayCast.didHitButton == true && KeypadManager.isKeypadPuzzleComplete == false)
+        else if (other.tag == "Button" && PlayerRayCast.didHitButton && !KeypadManager.isKeypadPuzzleComplete)
         {
             pressE.enabled = true;
 
@@ -171,7 +185,7 @@ public class PlayerCollisions : MonoBehaviour
                 KeypadManager.AddToCode(PlayerRayCast.hitDuplicate.collider.name);
             }
         }
-        else if (other.tag == "Fusebox" && PlayerRayCast.didHitSwitch == true)
+        else if (other.tag == "Fusebox" && PlayerRayCast.didHitSwitch && !FuseBox.fuseboxPuzzleComplete)
         {
             pressE.enabled = true;
 
@@ -180,10 +194,13 @@ public class PlayerCollisions : MonoBehaviour
             {
                 if (switch1Anim.GetBool("isDown"))
                 {
+                    FuseBox.switch1 = false;
                     switch1Anim.SetBool("isDown", false);
+
                 }
                 else
                 {
+                    FuseBox.switch1 = true;
                     switch1Anim.SetBool("isDown", true);
                 }
             }
@@ -193,10 +210,12 @@ public class PlayerCollisions : MonoBehaviour
             {
                 if (switch2Anim.GetBool("isDown"))
                 {
+                    FuseBox.switch2 = false;
                     switch2Anim.SetBool("isDown", false);
                 }
                 else
                 {
+                    FuseBox.switch2 = true;
                     switch2Anim.SetBool("isDown", true);
                 }
             }
@@ -206,10 +225,12 @@ public class PlayerCollisions : MonoBehaviour
             {
                 if (switch3Anim.GetBool("isDown"))
                 {
+                    FuseBox.switch3 = false;
                     switch3Anim.SetBool("isDown", false);
                 }
                 else
                 {
+                    FuseBox.switch3 = true;
                     switch3Anim.SetBool("isDown", true);
                 }
             }
@@ -219,10 +240,12 @@ public class PlayerCollisions : MonoBehaviour
             {
                 if (switch4Anim.GetBool("isDown"))
                 {
+                    FuseBox.switch4 = false;
                     switch4Anim.SetBool("isDown", false);
                 }
                 else
                 {
+                    FuseBox.switch4 = true;
                     switch4Anim.SetBool("isDown", true);
                 }
             }

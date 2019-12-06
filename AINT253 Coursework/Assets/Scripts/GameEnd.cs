@@ -12,7 +12,7 @@ public class GameEnd : MonoBehaviour
         if (other.tag == "Game End")
         {
             PlayerCollisions.allPuzzlesComplete = false;
-            PlayerCollisions.fuseboxPuzzleComplete = true;
+            FuseBox.fuseboxPuzzleComplete = false;
             KeypadManager.isKeypadPuzzleComplete = false;
 
             Cursor.lockState = CursorLockMode.None;
