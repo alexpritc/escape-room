@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerCollisions : MonoBehaviour
 {
     public static bool allPuzzlesComplete = false;
-    public static bool wirePuzzleComplete = true;
+    public static bool fuseboxPuzzleComplete = true;
 
     public GameObject handle;
     public GameObject door;
@@ -18,6 +18,7 @@ public class PlayerCollisions : MonoBehaviour
     public GameObject switch1;
     public GameObject switch2;
     public GameObject switch3;
+    public GameObject switch4;
 
     public Material darkGrey;
     public Material spaceInvaders;
@@ -31,6 +32,7 @@ public class PlayerCollisions : MonoBehaviour
     private Animator switch1Anim;
     private Animator switch2Anim;
     private Animator switch3Anim;
+    private Animator switch4Anim;
 
     private Rigidbody rb;
 
@@ -46,6 +48,7 @@ public class PlayerCollisions : MonoBehaviour
         switch1Anim = switch1.GetComponent<Animator>();
         switch2Anim = switch2.GetComponent<Animator>();
         switch3Anim = switch3.GetComponent<Animator>();
+        switch4Anim = switch4.GetComponent<Animator>();
 
         rb = gameObject.GetComponent<Rigidbody>();
 
@@ -61,7 +64,7 @@ public class PlayerCollisions : MonoBehaviour
     {
         // Check all the puzzles have been completed.
 
-        if (KeypadManager.isKeypadPuzzleComplete == true)
+        if (KeypadManager.isKeypadPuzzleComplete)
         {
             allPuzzlesComplete = true;
         }
@@ -132,7 +135,7 @@ public class PlayerCollisions : MonoBehaviour
 
                     isComputerOn = false;
                 }
-                else if (isComputerOn == false && wirePuzzleComplete == true)
+                else if (isComputerOn == false && fuseboxPuzzleComplete == true)
                 {
                     // Play switch on sound.
                     pcMeshR.material = cctv;
@@ -208,6 +211,19 @@ public class PlayerCollisions : MonoBehaviour
                 else
                 {
                     switch3Anim.SetBool("isDown", true);
+                }
+            }
+
+            // Switch 4.
+            if (Input.GetKeyDown(KeyCode.E) && PlayerRayCast.hitDuplicate.collider.gameObject.name == "Switch4")
+            {
+                if (switch4Anim.GetBool("isDown"))
+                {
+                    switch4Anim.SetBool("isDown", false);
+                }
+                else
+                {
+                    switch4Anim.SetBool("isDown", true);
                 }
             }
         }
