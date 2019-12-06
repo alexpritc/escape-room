@@ -42,7 +42,6 @@ public class KeypadManager : MonoBehaviour
     public static void AddToCode(string character)
     {
         playerInput += character;
-        Debug.Log("Send " + playerInput);
 
         switch (playerInput.Length)
         {
