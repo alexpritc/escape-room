@@ -172,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handle: {fileID: 0}
   door: {fileID: 0}
+  computer: {fileID: 0}
   computerScreen: {fileID: 0}
   code: {fileID: 0}
   standbyLight: {fileID: 0}
@@ -180,9 +181,12 @@ MonoBehaviour:
   switch2: {fileID: 0}
   switch3: {fileID: 0}
   switch4: {fileID: 0}
+  keypad: {fileID: 0}
+  fusebox: {fileID: 0}
   darkGrey: {fileID: 2100000, guid: 9e1e5f9f148b9f34eb1d360908f7fcca, type: 2}
   cctv: {fileID: 2100000, guid: 339471ebbee711641a99e9364775e0e0, type: 2}
   pressE: {fileID: 6288067580101215763}
+  e: {fileID: 0}
 --- !u!136 &6288067580520239860
 CapsuleCollider:
   m_ObjectHideFlags: 0
