@@ -8797,6 +8797,7 @@ GameObject:
   - component: {fileID: 833042193}
   - component: {fileID: 833042195}
   - component: {fileID: 833042194}
+  - component: {fileID: 833042196}
   m_Layer: 5
   m_Name: TextBox
   m_TagString: Untagged
@@ -8862,6 +8863,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833042192}
   m_CullTransparentMesh: 0
+--- !u!95 &833042196
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833042192}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c171b7af81c224b4e80e6b4a789ada2a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &844327759
 GameObject:
   m_ObjectHideFlags: 0
@@ -26570,7 +26590,7 @@ PrefabInstance:
     - target: {fileID: 6288067580921227040, guid: e5e403d267e9f43449a423b767f36ae9,
         type: 3}
       propertyPath: field of view
-      value: 100
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 6288067580921227046, guid: e5e403d267e9f43449a423b767f36ae9,
         type: 3}
