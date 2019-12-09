@@ -48,6 +48,8 @@ public class PlayerCollisions : MonoBehaviour
     private AudioSource computerAudio;
     private AudioSource keypadAudio;
     private AudioSource fuseboxAudio;
+    private AudioSource doorAudio;
+    private AudioSource doorHandleAudio;
 
     private bool isComputerOn = false;
 
@@ -72,6 +74,8 @@ public class PlayerCollisions : MonoBehaviour
         computerSwitch = computerScreen.GetComponent<AudioSource>();
         keypadAudio = keypad.GetComponent<AudioSource>();
         fuseboxAudio = fusebox.GetComponent<AudioSource>();
+        doorAudio = door.GetComponent<AudioSource>();
+        doorHandleAudio = handle.GetComponent<AudioSource>();
 
         rb = gameObject.GetComponent<Rigidbody>();
 
@@ -96,16 +100,23 @@ public class PlayerCollisions : MonoBehaviour
                     if (allPuzzlesComplete)
                     {
                         Invoke("OpenDoor", 0.2f);
-
                     }
                     else
                     {
                         // Play door locked sound here.
+                        if (!doorHandleAudio.isPlaying)
+                        {
+                            doorHandleAudio.Play();
+                        }
                     }
                 }
                 else
                 {
                     // Remove interactions from the door handle.
+                    if (!doorHandleAudio.isPlaying)
+                    {
+                        doorHandleAudio.Play();
+                    }
                 }
 
                 handleAnim.SetBool("isUsed", true);
@@ -286,11 +297,9 @@ public class PlayerCollisions : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         // Attempts to use the door handle.
-        if (other.tag == "Door Handle" && PlayerRayCast.didHitHandle)
+        if (other.tag == "Door Handle" && PlayerRayCast.didHitHandle && !doorAnim.GetBool("isOpened"))
         {
             pressE.enabled = true;
-
-            // Play door handle sound here.
 
             isInDoorRange = true;
         }
@@ -346,12 +355,6 @@ public class PlayerCollisions : MonoBehaviour
         doorAnim.SetBool("isOpened", true);
 
         // Play door opening sound here.
-    }
-
-    void CloseDoor()
-    {
-        doorAnim.SetBool("isOpened", false);
-
-        // Play door closing sound here.
+        doorAudio.Play();
     }
 }
