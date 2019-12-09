@@ -53,8 +53,6 @@ public class PlayerCollisions : MonoBehaviour
 
     private bool isComputerOn = false;
 
-    private bool hasComputerBeenTurnedOn = false;
-
     private bool isInComputerRange = false;
     private bool isInKeypadRange = false;
     private bool isInDoorRange = false;
@@ -267,24 +265,6 @@ public class PlayerCollisions : MonoBehaviour
                     e.Play();
                 }
             }
-        }
-
-
-        // Has the fusebox been repaired?
-        if (FuseBox.fuseboxPuzzleComplete && !hasComputerBeenTurnedOn)
-        {
-            hasComputerBeenTurnedOn = true;
-            // Play switch on sound.
-            pcMeshR.material = cctv;
-
-            computerAudio.Play();
-
-            standbyLight.color = Color.red;
-            standbyLight.enabled = true;
-            screenLight.enabled = true;
-            code.SetActive(true);
-
-            isComputerOn = true;
         }
 
         // Check all the puzzles have been completed.
