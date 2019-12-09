@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody rb;
     private Animator anim;
+    private AudioSource audioSource;
 
     private bool isGrounded;
 
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody>();
         anim = model.GetComponent<Animator>();
+        audioSource = gameObject.GetComponent<AudioSource>();
 
         playerTransform = transform;
         isGrounded = true;
@@ -54,10 +56,15 @@ public class PlayerMovement : MonoBehaviour
         if (x == 0 && z == 0)
         {
             anim.SetBool("isWalking", false);
+            audioSource.Pause();
         }
         else
         {
             anim.SetBool("isWalking", true);
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
         }
 
         // Local movement according to player's rotation.

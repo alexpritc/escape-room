@@ -10,6 +10,7 @@ public class PlayerCollisions : MonoBehaviour
     public GameObject handle;
     public GameObject door;
 
+    public GameObject computer;
     public GameObject computerScreen;
     public GameObject code;
     public Light standbyLight;
@@ -20,10 +21,16 @@ public class PlayerCollisions : MonoBehaviour
     public GameObject switch3;
     public GameObject switch4;
 
+    public GameObject keypad;
+
+    public GameObject fusebox;
+
     public Material darkGrey;
     public Material cctv;
 
     public Text pressE;
+
+    public AudioSource e;
 
     private Animator handleAnim;
     private Animator doorAnim;
@@ -36,6 +43,11 @@ public class PlayerCollisions : MonoBehaviour
     private Rigidbody rb;
 
     private MeshRenderer pcMeshR;
+
+    private AudioSource computerSwitch;
+    private AudioSource computerAudio;
+    private AudioSource keypadAudio;
+    private AudioSource fuseboxAudio;
 
     private bool isComputerOn = false;
 
@@ -55,6 +67,11 @@ public class PlayerCollisions : MonoBehaviour
         switch2Anim = switch2.GetComponent<Animator>();
         switch3Anim = switch3.GetComponent<Animator>();
         switch4Anim = switch4.GetComponent<Animator>();
+
+        computerAudio = computer.GetComponent<AudioSource>();
+        computerSwitch = computerScreen.GetComponent<AudioSource>();
+        keypadAudio = keypad.GetComponent<AudioSource>();
+        fuseboxAudio = fusebox.GetComponent<AudioSource>();
 
         rb = gameObject.GetComponent<Rigidbody>();
 
@@ -96,9 +113,13 @@ public class PlayerCollisions : MonoBehaviour
             }
             else if (isInComputerRange)
             {
+                // Play switch sound here.
+                computerSwitch.Play();
+
                 if (isComputerOn)
                 {
-                    // Play switch off sound.
+                    computerAudio.Pause();
+
                     pcMeshR.material = darkGrey;
 
                     standbyLight.enabled = false;
@@ -109,8 +130,9 @@ public class PlayerCollisions : MonoBehaviour
                 }
                 else if (!isComputerOn && FuseBox.fuseboxPuzzleComplete == true)
                 {
-                    // Play switch on sound.
                     pcMeshR.material = cctv;
+
+                    computerAudio.Play();
 
                     standbyLight.color = Color.red;
                     standbyLight.enabled = true;
@@ -123,7 +145,8 @@ public class PlayerCollisions : MonoBehaviour
                 }
                 else
                 {
-                    // Play switch on sound.
+                    computerAudio.Pause();
+
                     pcMeshR.material = darkGrey;
 
                     standbyLight.color = Color.yellow;
@@ -138,6 +161,9 @@ public class PlayerCollisions : MonoBehaviour
             }
             else if (isInKeypadRange)
             {
+                // Play keypad noise.
+                keypadAudio.Play();
+
                 // Send the button pressed to the keypad to add it to the current input.
                 KeypadManager.AddToCode(PlayerRayCast.hitDuplicate.collider.name);
             }
@@ -146,6 +172,9 @@ public class PlayerCollisions : MonoBehaviour
                 // Switch 1.
                 if (Input.GetKeyDown(KeyCode.E) && PlayerRayCast.hitDuplicate.collider.gameObject.name == "Switch1")
                 {
+                    // Play sound.
+                    fuseboxAudio.Play();
+
                     if (switch1Anim.GetBool("isDown"))
                     {
                         FuseBox.switch1 = false;
@@ -162,6 +191,9 @@ public class PlayerCollisions : MonoBehaviour
                 // Switch 2.
                 if (Input.GetKeyDown(KeyCode.E) && PlayerRayCast.hitDuplicate.collider.gameObject.name == "Switch2")
                 {
+                    // Play sound.
+                    fuseboxAudio.Play();
+
                     if (switch2Anim.GetBool("isDown"))
                     {
                         FuseBox.switch2 = false;
@@ -181,17 +213,30 @@ public class PlayerCollisions : MonoBehaviour
                     {
                         FuseBox.switch3 = false;
                         switch3Anim.SetBool("isDown", false);
+
+                        if (!fuseboxAudio.isPlaying)
+                        {
+                            fuseboxAudio.Play();
+                        }
                     }
                     else
                     {
                         FuseBox.switch3 = true;
                         switch3Anim.SetBool("isDown", true);
+
+                        if (!fuseboxAudio.isPlaying)
+                        {
+                            fuseboxAudio.Play();
+                        }
                     }
                 }
 
                 // Switch 4.
                 if (Input.GetKeyDown(KeyCode.E) && PlayerRayCast.hitDuplicate.collider.gameObject.name == "Switch4")
                 {
+                    // Play sound.
+                    fuseboxAudio.Play();
+
                     if (switch4Anim.GetBool("isDown"))
                     {
                         FuseBox.switch4 = false;
@@ -204,7 +249,15 @@ public class PlayerCollisions : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                if (!e.isPlaying)
+                {
+                    e.Play();
+                }
+            }
         }
+
 
         // Has the fusebox been repaired?
         if (FuseBox.fuseboxPuzzleComplete && !hasComputerBeenTurnedOn)
@@ -212,6 +265,8 @@ public class PlayerCollisions : MonoBehaviour
             hasComputerBeenTurnedOn = true;
             // Play switch on sound.
             pcMeshR.material = cctv;
+
+            computerAudio.Play();
 
             standbyLight.color = Color.red;
             standbyLight.enabled = true;
