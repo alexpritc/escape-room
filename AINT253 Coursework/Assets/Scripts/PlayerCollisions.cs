@@ -41,6 +41,11 @@ public class PlayerCollisions : MonoBehaviour
 
     private bool hasComputerBeenTurnedOn = false;
 
+    private bool isInComputerRange = false;
+    private bool isInKeypadRange = false;
+    private bool isInDoorRange = false;
+    private bool isInFuseboxRange = false;
+
     void Start()
     {
         handleAnim = handle.GetComponent<Animator>();
@@ -64,60 +69,17 @@ public class PlayerCollisions : MonoBehaviour
 
     void Update()
     {
-        if (FuseBox.fuseboxPuzzleComplete && !hasComputerBeenTurnedOn)
+        // Player input.
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            hasComputerBeenTurnedOn = true;
-            // Play switch on sound.
-            pcMeshR.material = cctv;
-
-            standbyLight.color = Color.red;
-            standbyLight.enabled = true;
-            screenLight.enabled = true;
-            code.SetActive(true);
-
-            isComputerOn = true;
-        }
-
-        // Check all the puzzles have been completed.
-        if (KeypadManager.isKeypadPuzzleComplete)
-        {
-            allPuzzlesComplete = true;
-        }
-    }
-
-    void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.tag == "Walls")
-        {
-            PlayerMovement.speed = 2.5f;
-        }
-    }
-
-    void OnCollisionExit(Collision other)
-    {
-        if (other.gameObject.tag == "Walls")
-        {
-            PlayerMovement.speed = 15f;
-        }
-    }
-
-    void OnTriggerStay(Collider other)
-    {
-        // Attempts to use the door handle.
-        if (other.tag == "Door Handle" && PlayerRayCast.didHitHandle)
-        {
-            pressE.enabled = true;
-
-            // Play door handle sound here.
-
-            if (Input.GetKeyDown(KeyCode.E))
-            { 
+            if (isInDoorRange)
+            {
                 if (!doorAnim.GetBool("isOpened"))
                 {
                     if (allPuzzlesComplete)
                     {
                         Invoke("OpenDoor", 0.2f);
-                        
+
                     }
                     else
                     {
@@ -132,13 +94,7 @@ public class PlayerCollisions : MonoBehaviour
                 handleAnim.SetBool("isUsed", true);
                 Invoke("Buffer", 0.1f);
             }
-        }
-        // Turning the computer on and off.
-        else if (other.tag == "Computer" && PlayerRayCast.didHitComputer)
-        {
-            pressE.enabled = true;
-
-            if (Input.GetKeyDown(KeyCode.E))
+            else if (isInComputerRange)
             {
                 if (isComputerOn)
                 {
@@ -180,94 +136,148 @@ public class PlayerCollisions : MonoBehaviour
                     isComputerOn = true;
                 }
             }
+            else if (isInKeypadRange)
+            {
+                // Send the button pressed to the keypad to add it to the current input.
+                KeypadManager.AddToCode(PlayerRayCast.hitDuplicate.collider.name);
+            }
+            else if (isInFuseboxRange)
+            {
+                // Switch 1.
+                if (Input.GetKeyDown(KeyCode.E) && PlayerRayCast.hitDuplicate.collider.gameObject.name == "Switch1")
+                {
+                    if (switch1Anim.GetBool("isDown"))
+                    {
+                        FuseBox.switch1 = false;
+                        switch1Anim.SetBool("isDown", false);
+
+                    }
+                    else
+                    {
+                        FuseBox.switch1 = true;
+                        switch1Anim.SetBool("isDown", true);
+                    }
+                }
+
+                // Switch 2.
+                if (Input.GetKeyDown(KeyCode.E) && PlayerRayCast.hitDuplicate.collider.gameObject.name == "Switch2")
+                {
+                    if (switch2Anim.GetBool("isDown"))
+                    {
+                        FuseBox.switch2 = false;
+                        switch2Anim.SetBool("isDown", false);
+                    }
+                    else
+                    {
+                        FuseBox.switch2 = true;
+                        switch2Anim.SetBool("isDown", true);
+                    }
+                }
+
+                // Switch 3.
+                if (Input.GetKeyDown(KeyCode.E) && PlayerRayCast.hitDuplicate.collider.gameObject.name == "Switch3")
+                {
+                    if (switch3Anim.GetBool("isDown"))
+                    {
+                        FuseBox.switch3 = false;
+                        switch3Anim.SetBool("isDown", false);
+                    }
+                    else
+                    {
+                        FuseBox.switch3 = true;
+                        switch3Anim.SetBool("isDown", true);
+                    }
+                }
+
+                // Switch 4.
+                if (Input.GetKeyDown(KeyCode.E) && PlayerRayCast.hitDuplicate.collider.gameObject.name == "Switch4")
+                {
+                    if (switch4Anim.GetBool("isDown"))
+                    {
+                        FuseBox.switch4 = false;
+                        switch4Anim.SetBool("isDown", false);
+                    }
+                    else
+                    {
+                        FuseBox.switch4 = true;
+                        switch4Anim.SetBool("isDown", true);
+                    }
+                }
+            }
+        }
+
+        // Has the fusebox been repaired?
+        if (FuseBox.fuseboxPuzzleComplete && !hasComputerBeenTurnedOn)
+        {
+            hasComputerBeenTurnedOn = true;
+            // Play switch on sound.
+            pcMeshR.material = cctv;
+
+            standbyLight.color = Color.red;
+            standbyLight.enabled = true;
+            screenLight.enabled = true;
+            code.SetActive(true);
+
+            isComputerOn = true;
+        }
+
+        // Check all the puzzles have been completed.
+        if (KeypadManager.isKeypadPuzzleComplete)
+        {
+            allPuzzlesComplete = true;
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        // Attempts to use the door handle.
+        if (other.tag == "Door Handle" && PlayerRayCast.didHitHandle)
+        {
+            pressE.enabled = true;
+
+            // Play door handle sound here.
+
+            isInDoorRange = true;
+        }
+        // Turning the computer on and off.
+        else if (other.tag == "Computer" && PlayerRayCast.didHitComputer)
+        {
+            pressE.enabled = true;
+
+            isInComputerRange = true;
         }
         // Pressing buttons on the keypad.
         else if (other.tag == "Button" && PlayerRayCast.didHitButton && !KeypadManager.isKeypadPuzzleComplete)
         {
             pressE.enabled = true;
 
-            if (Input.GetKeyDown(KeyCode.E) && KeypadManager.playerInput.Length < 4)
-            {
-                // Play button sound here.
-
-                // Send the button pressed to the keypad to add it to the current input.
-                KeypadManager.AddToCode(PlayerRayCast.hitDuplicate.collider.name);
-            }
+            isInKeypadRange = true;
         }
         else if (other.tag == "Fusebox" && PlayerRayCast.didHitSwitch && !FuseBox.fuseboxPuzzleComplete)
         {
             pressE.enabled = true;
 
-            // Switch 1.
-            if (Input.GetKeyDown(KeyCode.E) && PlayerRayCast.hitDuplicate.collider.gameObject.name == "Switch1")
-            {
-                if (switch1Anim.GetBool("isDown"))
-                {
-                    FuseBox.switch1 = false;
-                    switch1Anim.SetBool("isDown", false);
-
-                }
-                else
-                {
-                    FuseBox.switch1 = true;
-                    switch1Anim.SetBool("isDown", true);
-                }
-            }
-
-            // Switch 2.
-            if (Input.GetKeyDown(KeyCode.E) && PlayerRayCast.hitDuplicate.collider.gameObject.name == "Switch2")
-            {
-                if (switch2Anim.GetBool("isDown"))
-                {
-                    FuseBox.switch2 = false;
-                    switch2Anim.SetBool("isDown", false);
-                }
-                else
-                {
-                    FuseBox.switch2 = true;
-                    switch2Anim.SetBool("isDown", true);
-                }
-            }
-
-            // Switch 3.
-            if (Input.GetKeyDown(KeyCode.E) && PlayerRayCast.hitDuplicate.collider.gameObject.name == "Switch3")
-            {
-                if (switch3Anim.GetBool("isDown"))
-                {
-                    FuseBox.switch3 = false;
-                    switch3Anim.SetBool("isDown", false);
-                }
-                else
-                {
-                    FuseBox.switch3 = true;
-                    switch3Anim.SetBool("isDown", true);
-                }
-            }
-
-            // Switch 4.
-            if (Input.GetKeyDown(KeyCode.E) && PlayerRayCast.hitDuplicate.collider.gameObject.name == "Switch4")
-            {
-                if (switch4Anim.GetBool("isDown"))
-                {
-                    FuseBox.switch4 = false;
-                    switch4Anim.SetBool("isDown", false);
-                }
-                else
-                {
-                    FuseBox.switch4 = true;
-                    switch4Anim.SetBool("isDown", true);
-                }
-            }
+            isInFuseboxRange = true;
         }
         else
         {
             pressE.enabled = false;
+
+            isInComputerRange = false;
+            isInDoorRange = false;
+            isInFuseboxRange = false;
+            isInKeypadRange = false;
         }
     }
 
     void OnTriggerExit(Collider other)
     {
         pressE.enabled = false;
+
+        isInComputerRange = false;
+        isInDoorRange = false;
+        isInFuseboxRange = false;
+        isInKeypadRange = false;
     }
 
     void Buffer()

@@ -15,6 +15,11 @@ public class GameEnd : MonoBehaviour
             FuseBox.fuseboxPuzzleComplete = false;
             KeypadManager.isKeypadPuzzleComplete = false;
 
+            FuseBox.switch1 = false;
+            FuseBox.switch2 = false;
+            FuseBox.switch3 = false;
+            FuseBox.switch4 = false;
+
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
