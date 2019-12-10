@@ -139,6 +139,7 @@ public class PlayerCollisions : MonoBehaviour
                 }
                 else if (!isComputerOn && FuseBox.fuseboxPuzzleComplete == true)
                 {
+                
                     pcMeshR.material = cctv;
 
                     computerAudio.Play();
