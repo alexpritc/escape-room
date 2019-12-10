@@ -8,11 +8,11 @@ public class RotateTowardsTarget : MonoBehaviour
 
     private float speed = 1f;
 
-    private AudioSource audio;
+    private AudioSource camAudio;
     
     void Start()
     {
-        audio = gameObject.GetComponent<AudioSource>();
+        camAudio = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -24,9 +24,9 @@ public class RotateTowardsTarget : MonoBehaviour
         if (transform.rotation != Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed))
         {
             // Play camera moving mechanical sound here. *Vsssst*. *Vrrmm*.
-            if (!audio.isPlaying)
+            if (!camAudio.isPlaying)
             {
-                audio.Play();
+                camAudio.Play();
             }
         }
         else
@@ -37,7 +37,7 @@ public class RotateTowardsTarget : MonoBehaviour
 
     void Buffer()
     {
-        audio.Pause();
+        camAudio.Pause();
     }
  }
 

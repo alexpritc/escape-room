@@ -22,8 +22,11 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (other.gameObject.name == "Player" && !hasTriggered)
         {
-            hasTriggered = true;
-            TriggerDialogue();
+            if (!DialogueManager.isPlaying)
+            {
+                hasTriggered = true;
+                TriggerDialogue();
+            }
         }
     }
 }

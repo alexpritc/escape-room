@@ -5,15 +5,19 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    public static bool isPlaying = false;
+
     //public Text nameText;
     public Text dialogueText;
 
     public GameObject textManager;
     public GameObject intercom;
+    public GameObject intercomRot;
 
     private Queue<string> sentences;
 
     private Animator textManagerAnim;
+    private Animator intercomAnim;
 
     private AudioSource textAudio;
 
@@ -21,19 +25,22 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<string>();
-        textManagerAnim = textManager.GetComponent<Animator>();
-        textAudio = intercom.GetComponent<AudioSource>();
 
-        textManagerAnim.SetBool("isOpen", false);
+        textManagerAnim = textManager.GetComponent<Animator>();
+        intercomAnim = intercomRot.GetComponent<Animator>();
+
+        textAudio = intercom.GetComponent<AudioSource>();
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
         //nameText.text = dialogue.name;
+        isPlaying = true;
 
         sentences.Clear();
 
         textManagerAnim.SetBool("isOpen", true);
+        intercomAnim.SetBool("isOn", true);
 
         foreach (string sentence in dialogue.sentences)
         {
@@ -77,5 +84,7 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         textManagerAnim.SetBool("isOpen", false);
+        intercomAnim.SetBool("isOn", false);
+        isPlaying = false;
     }
 }
