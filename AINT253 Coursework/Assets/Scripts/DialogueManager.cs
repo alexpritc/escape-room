@@ -30,6 +30,8 @@ public class DialogueManager : MonoBehaviour
         intercomAnim = intercomRot.GetComponent<Animator>();
 
         textAudio = intercom.GetComponent<AudioSource>();
+
+        textManagerAnim.SetBool("isOpen", false);
     }
 
     public void StartDialogue(Dialogue dialogue)
