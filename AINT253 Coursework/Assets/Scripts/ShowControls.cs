@@ -5,16 +5,13 @@ using UnityEngine;
 public class ShowControls : MonoBehaviour
 {
     public GameObject controls;
-    public bool isShowing = false;
+    public static bool isShowing = false;
 
-    void Update()
+    void Start()
     {
-        if (controls.activeInHierarchy)
-        {
-            isShowing = true;
-        }
-        else {
+        if (this.gameObject.name == "Controls Button") {
             isShowing = false;
+            controls.SetActive(false);
         }
     }
 
@@ -23,9 +20,11 @@ public class ShowControls : MonoBehaviour
         if (isShowing)
         {
             controls.SetActive(false);
+            isShowing = false;
         }
         else {
             controls.SetActive(true);
+            isShowing = true;
         }
     }
 

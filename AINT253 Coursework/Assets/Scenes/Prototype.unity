@@ -10203,7 +10203,7 @@ MonoBehaviour:
   dialogue:
     name: Door
     sentences:
-    - It's locked, genius.
+    - '...Next time you borrow University equipment, look after it.'
 --- !u!1 &1021414575
 GameObject:
   m_ObjectHideFlags: 0
@@ -19528,6 +19528,7 @@ GameObject:
   - component: {fileID: 1804696948}
   - component: {fileID: 1804696947}
   - component: {fileID: 1804696946}
+  - component: {fileID: 1804696950}
   m_Layer: 0
   m_Name: Newspaper
   m_TagString: Untagged
@@ -19546,8 +19547,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.0663328, y: 1, z: 3.2448554}
+  m_Center: {x: 0.015172571, y: 0, z: 1.1224207}
 --- !u!23 &1804696947
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19608,6 +19609,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: -54, z: 0}
+--- !u!114 &1804696950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804696945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd79db7ee35827d4289b1f58532bdb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Y2K
+    sentences:
+    - 2 more years...
+    - Come midnight on the 1st Janurary 2000, systems worldwide will crash.
+    - The Y2K bug will be the end of civilisation, just you wait.
 --- !u!1 &1805415978
 GameObject:
   m_ObjectHideFlags: 0
@@ -27973,8 +27992,8 @@ MonoBehaviour:
   dialogue:
     name: Keypad
     sentences:
-    - HAHA! I CHANGED THE ROOM DOOR CODE!
-    - TRY WORKING IT OUT NOW, IDIOT!
+    - I'm a genius, you'll NEVER escape.
+    - HARHARHARHARHARHAR!!!!!!!!!
 --- !u!136 &8296172667891378993
 CapsuleCollider:
   m_ObjectHideFlags: 0
