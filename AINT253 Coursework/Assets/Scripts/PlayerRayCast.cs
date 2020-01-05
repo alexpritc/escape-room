@@ -22,11 +22,11 @@ public class PlayerRayCast : MonoBehaviour
 
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
-        Debug.DrawRay(transform.position, fwd, Color.red);
+        //Debug.DrawRay(transform.position, fwd, Color.red);
 
         if (Physics.Raycast(transform.position, fwd, out hit, Mathf.Infinity, layerMask9))
         {
-            Debug.DrawRay(transform.position, fwd * hit.distance, Color.yellow);
+            //Debug.DrawRay(transform.position, fwd * hit.distance, Color.yellow);
 
             if (hit.collider.gameObject.name == "Door Handle")
             {
