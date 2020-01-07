@@ -18,8 +18,7 @@ CRUNCH.
 Go to https://alexpritc.itch.io/crunch, download the .zip, extract it and run the .exe file!
 
 ## References
-All code was produced by Alex Pritchard.
+All code and audio was produced by Alex Pritchard.
 
 Third party art assets:
-
-Third party audio assets:
+Carpet, Frosted Glass and Ceiling textures from textures.com
