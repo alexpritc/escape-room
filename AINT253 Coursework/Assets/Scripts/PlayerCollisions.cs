@@ -58,6 +58,8 @@ public class PlayerCollisions : MonoBehaviour
     private bool isInDoorRange = false;
     private bool isInFuseboxRange = false;
 
+    private bool isFuseBoxFixed = false;
+
     void Start()
     {
         handleAnim = handle.GetComponent<Animator>();
@@ -88,6 +90,22 @@ public class PlayerCollisions : MonoBehaviour
 
     void Update()
     {
+        if (isFuseBoxFixed == false && FuseBox.fuseboxPuzzleComplete == true) {
+            isFuseBoxFixed = true;
+            pcMeshR.material = cctv;
+
+            computerAudio.Play();
+
+            standbyLight.color = Color.red;
+            standbyLight.enabled = true;
+
+            screenLight.enabled = true;
+
+            code.SetActive(true);
+
+            isComputerOn = true;
+        }
+
         // Player input.
         if (Input.GetKeyDown(KeyCode.E))
         {
